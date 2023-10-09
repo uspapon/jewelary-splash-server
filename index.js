@@ -41,10 +41,10 @@ async function run() {
         // user related APIs
         app.post('/users', async (req, res) => {
             const user = req.body;
-            // console.log(user);
+            console.log(user);
             const query = { email: user.email }
             const isUserExists = await userCollection.findOne(query);
-            // console.log("existing user", isUserExists);
+            console.log("existing user", isUserExists);
             if (isUserExists) {
                 return res.send({ message: "user already exists" })
             }
