@@ -29,6 +29,14 @@ async function run() {
         await client.connect();
 
         const userCollection = client.db("jewelrySplash").collection("user");
+        const jewelryCollection = client.db("jewelrySplash").collection("jewelry");
+
+         // Jewelry related APIs   
+         app.get('/alljewelry', async (req, res) => {
+            const result = await jewelryCollection.find().toArray();
+            console.log(result);
+            res.send(result);
+        })
 
         // Send a ping to confirm a successful connection
         await client.db("admin").command({ ping: 1 });
